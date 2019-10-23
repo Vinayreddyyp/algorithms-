@@ -71,6 +71,8 @@ function MeanMedianMode(array) {
     }
 }
 
+
+
 function getMean(array) {
   var sum = 0;
     array.forEach(num => {
