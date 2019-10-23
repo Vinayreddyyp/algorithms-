@@ -51,15 +51,15 @@ function App() {
 
 /* Reverse Array in place it takes array as parameter reverse the array and teturns reversed arr*/
 
-function reverseArrayInPlace(arr) {
-    for(var i = 0; i < arr.length/2; i++) {
-       var tempVar = arr[i];
-       arr[i] = arr[arr.length - 1 - i];
-       arr[arr.length - 1 - i] = tempVar;
-    }
-    return arr;
-};
-reverseArrayInPlace([1,2,3,5,6]);
+// function reverseArrayInPlace(arr) {
+//     for(var i = 0; i < arr.length/2; i++) {
+//        var tempVar = arr[i];
+//        arr[i] = arr[arr.length - 1 - i];
+//        arr[arr.length - 1 - i] = tempVar;
+//     }
+//     return arr;
+// };
+// reverseArrayInPlace([1,2,3,5,6]);
 
 /* calculating mean median and mode and return an object have three values */
  
@@ -70,8 +70,6 @@ function MeanMedianMode(array) {
       mode: getMode(array)
     }
 }
-
-
 
 function getMean(array) {
   var sum = 0;
@@ -138,7 +136,6 @@ function getMode(array) {
 
 };
 MeanMedianMode([10,23,10,23]);
-
 
   return (
     <div className="App">
