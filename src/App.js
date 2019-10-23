@@ -54,13 +54,89 @@ function App() {
 function reverseArrayInPlace(arr) {
     for(var i = 0; i < arr.length/2; i++) {
        var tempVar = arr[i];
-       debugger;
        arr[i] = arr[arr.length - 1 - i];
        arr[arr.length - 1 - i] = tempVar;
     }
     return arr;
 };
 reverseArrayInPlace([1,2,3,5,6]);
+
+/* calculating mean median and mode and return an object have three values */
+ 
+function MeanMedianMode(array) {
+   return {
+      mean: getMean(array),
+      median: getMedian(array),
+      mode: getMode(array)
+    }
+}
+
+function getMean(array) {
+  var sum = 0;
+    array.forEach(num => {
+      sum += sum;
+    });
+    var mean = sum/ array.length;
+    return mean;
+};
+function getMedian(array) {
+ 
+  array.sort((a,b)=> {
+    return a-b;
+  });
+  console.log("array sorted", array);
+  var median;
+
+  if (array.length % 2 !== 0) {
+    median = array[Math.floor(array.length / 2)];
+    console.log("median is", median);
+  } else {
+    var mid1 = array[(array.length/2) - 1];
+    console.log("mid1", mid1);
+    var mid2 = array[array.length / 2];
+    console.log("mid2", mid2);
+    median = (mid1 + mid2)/2;
+    console.log("median is", median);
+  }
+  return median;
+}
+
+
+function getMode(array) {
+   var modeObj = {};
+   debugger;
+    array.forEach(num => {
+       if(!modeObj[num]) {
+          modeObj[num] = 0;
+          console.log("modeObj",  modeObj[num]);
+          modeObj[num]++;
+       }
+    });
+    console.log("modeObj", modeObj);
+    var maxFrequency = 0;
+    var modes = [];
+    for (var num in modeObj) {
+      console.log("nums", num);
+      if (modeObj[num] > maxFrequency) {
+        console.log("modeObj[num]", modeObj[num]);
+        modes = [num];
+        console.log("modes = [num]]", modes);
+        maxFrequency = modeObj[num];
+        console.log(" maxFrequency = modeObj[num]",  maxFrequency);
+      }
+      else if (modeObj[num] === maxFrequency) modes.push(num);
+      console.log("push modes", modes);
+    }
+    // if every value appears same amount of times 
+    if (modes.length === Object.keys(modeObj).length){
+      modes = [];
+      console.log("", modes);
+    }
+    return modes;
+
+};
+MeanMedianMode([10,23,10,23]);
+
 
   return (
     <div className="App">
