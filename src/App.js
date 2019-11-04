@@ -63,80 +63,114 @@ function App() {
 
 /* calculating mean median and mode and return an object have three values */
  
-function MeanMedianMode(array) {
-   return {
-      mean: getMean(array),
-      median: getMedian(array),
-      mode: getMode(array)
-    }
-}
+// function MeanMedianMode(array) {
+//    return {
+//       mean: getMean(array),
+//       median: getMedian(array),
+//       mode: getMode(array)
+//     }
+// }
 
-function getMean(array) {
-  var sum = 0;
-    array.forEach(num => {
-      sum += sum;
-    });
-    var mean = sum/ array.length;
-    return mean;
-};
-function getMedian(array) {
+// function getMean(array) {
+//   var sum = 0;
+//     array.forEach(num => {
+//       sum += sum;
+//     });
+//     var mean = sum/ array.length;
+//     return mean;
+// };
+// function getMedian(array) {
  
-  array.sort((a,b)=> {
-    return a-b;
-  });
-  console.log("array sorted", array);
-  var median;
+//   array.sort((a,b)=> {
+//     return a-b;
+//   });
+//   console.log("array sorted", array);
+//   var median;
 
-  if (array.length % 2 !== 0) {
-    median = array[Math.floor(array.length / 2)];
-    console.log("median is", median);
-  } else {
-    var mid1 = array[(array.length/2) - 1];
-    console.log("mid1", mid1);
-    var mid2 = array[array.length / 2];
-    console.log("mid2", mid2);
-    median = (mid1 + mid2)/2;
-    console.log("median is", median);
-  }
-  return median;
-}
+//   if (array.length % 2 !== 0) {
+//     median = array[Math.floor(array.length / 2)];
+//     console.log("median is", median);
+//   } else {
+//     var mid1 = array[(array.length/2) - 1];
+//     console.log("mid1", mid1);
+//     var mid2 = array[array.length / 2];
+//     console.log("mid2", mid2);
+//     median = (mid1 + mid2)/2;
+//     console.log("median is", median);
+//   }
+//   return median;
+// }
 
 
-function getMode(array) {
-   var modeObj = {};
-   debugger;
-    array.forEach(num => {
-       if(!modeObj[num]) {
-          modeObj[num] = 0;
-          console.log("modeObj",  modeObj[num]);
-          modeObj[num]++;
-       }
-    });
-    console.log("modeObj", modeObj);
-    var maxFrequency = 0;
-    var modes = [];
-    for (var num in modeObj) {
-      console.log("nums", num);
-      if (modeObj[num] > maxFrequency) {
-        console.log("modeObj[num]", modeObj[num]);
-        modes = [num];
-        console.log("modes = [num]]", modes);
-        maxFrequency = modeObj[num];
-        console.log(" maxFrequency = modeObj[num]",  maxFrequency);
+// function getMode(array) {
+//    var modeObj = {};
+//    debugger;
+//     array.forEach(num => {
+//        if(!modeObj[num]) {
+//           modeObj[num] = 0;
+//           console.log("modeObj",  modeObj[num]);
+//           modeObj[num]++;
+//        }
+//     });
+//     console.log("modeObj", modeObj);
+//     var maxFrequency = 0;
+//     var modes = [];
+//     for (var num in modeObj) {
+//       console.log("nums", num);
+//       if (modeObj[num] > maxFrequency) {
+//         console.log("modeObj[num]", modeObj[num]);
+//         modes = [num];
+//         console.log("modes = [num]]", modes);
+//         maxFrequency = modeObj[num];
+//         console.log(" maxFrequency = modeObj[num]",  maxFrequency);
+//       }
+//       else if (modeObj[num] === maxFrequency) modes.push(num);
+//       console.log("push modes", modes);
+//     }
+//     // if every value appears same amount of times 
+//     if (modes.length === Object.keys(modeObj).length){
+//       modes = [];
+//       console.log("", modes);
+//     }
+//     return modes;
+
+// };
+// MeanMedianMode([10,23,10,23]);
+
+/* Two sum algorithm ehich takes as array and number returns every pair of numbers from 
+  'numArray' that adds upto the sum */
+
+  // function findTwoSum(numArray, sum) {
+  //    var pairs = [];
+  //    var hashTabel = [];
+  //   //  debugger;
+  //    for (var i=0; i < numArray.length; i++) {
+  //       var currentNum = numArray[i];
+  //       //debugger;
+  //       console.log("hashTabel", hashTabel);
+  //       console.log("current number", currentNum);
+  //       var counterPart = sum - currentNum;
+  //       if(hashTabel.indexOf(counterPart) !== -1) {
+  //         pairs.push([currentNum, counterPart]);
+  //       }
+  //       hashTabel.push(currentNum);
+  //    }
+  //    console.log("pairs", pairs);
+  // }
+  // findTwoSum([2,0,3,2,34], 1);
+
+  function BinarySearch(numArray, key) {
+      var middleIndx = Math.floor(numArray.length/2);
+      var middleElem = numArray[middleIndx];
+      debugger;
+      if(middleElem === key) return true;
+      else if(middleElem < key && numArray.length > 1) {
+        return BinarySearch(numArray.splice(middleIndx, numArray.length), key);
+      } else if(middleElem > key && numArray.lenght > 1) {
+         return BinarySearch(numArray.splice(0, middleIndx), key);
       }
-      else if (modeObj[num] === maxFrequency) modes.push(num);
-      console.log("push modes", modes);
-    }
-    // if every value appears same amount of times 
-    if (modes.length === Object.keys(modeObj).length){
-      modes = [];
-      console.log("", modes);
-    }
-    return modes;
-
-};
-MeanMedianMode([10,23,10,23]);
-
+  }
+  BinarySearch([56,5,6,7,8,9,13,15,16,36], 56);
   return (
     <div className="App">
 
