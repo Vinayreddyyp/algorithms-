@@ -159,18 +159,37 @@ function App() {
   // }
   // findTwoSum([2,0,3,2,34], 1);
 
-  function BinarySearch(numArray, key) {
-      var middleIndx = Math.floor(numArray.length/2);
-      var middleElem = numArray[middleIndx];
-      debugger;
-      if(middleElem === key) return true;
-      else if(middleElem < key && numArray.length > 1) {
-        return BinarySearch(numArray.splice(middleIndx, numArray.length), key);
-      } else if(middleElem > key && numArray.lenght > 1) {
-         return BinarySearch(numArray.splice(0, middleIndx), key);
+
+  /* Binat Search operation takes two arguments  array and key and returns true once it matches with key*/
+  // function BinarySearch(numArray, key) {
+  //     var middleIndx = Math.floor(numArray.length/2);
+  //     var middleElem = numArray[middleIndx];
+  //     if(middleElem === key) return true;
+  //     else if(middleElem < key && numArray.length > 1) {
+  //       return BinarySearch(numArray.splice(middleIndx, numArray.length), key);
+  //     } else if(middleElem > key && numArray.lenght > 1) {
+  //        return BinarySearch(numArray.splice(0, middleIndx), key);
+  //     }
+  // }
+  // BinarySearch([56,5,6,7,8,9,13,15,16,36], 56);
+
+  /* Memoized BInary Search operation with more fast execution */
+  function fibMemo(index, cache) {
+   console.log("before", cache);
+    cache = cache || [];
+    console.log("cache", cache);
+    debugger;
+    if (cache[index]) return cache[index];
+    else {
+      if (index < 3) return 1;
+      else {
+        cache[index] = fibMemo(index - 1, cache) + fibMemo(index - 2, cache);
       }
+    }
+    return cache[index];
   }
-  BinarySearch([56,5,6,7,8,9,13,15,16,36], 56);
+   
+  fibMemo(3);
   return (
     <div className="App">
 
