@@ -174,22 +174,67 @@ function App() {
   // BinarySearch([56,5,6,7,8,9,13,15,16,36], 56);
 
   /* Memoized BInary Search operation with more fast execution */
-  function fibMemo(index, cache) {
-   console.log("before", cache);
-    cache = cache || [];
-    console.log("cache", cache);
+  // function fibMemo(index, cache) {
+  //  console.log("before", cache);
+  //   cache = cache || [];
+  //   console.log("cache", cache);
+  //   debugger;
+  //   if (cache[index]) return cache[index];
+  //   else {
+  //     if (index < 3) return 1;
+  //     else {
+  //       cache[index] = fibMemo(index - 1, cache) + fibMemo(index - 2, cache);
+  //     }
+  //   }
+  //   return cache[index];
+  // }
+   
+  //fibMemo(3);
+  // function primeNumber(num) {
+  //    var primes = [];
+  //    for(var i=0; i<=num; i++) {
+  //       primes[i] = true;
+  //    }
+  //    console.log("primes", primes);
+  //    primes[0] = false;
+  //    primes[1] = false;
+
+
+  //    for(var i=2; i<Math.sqrt(num); i++) {
+  //      for(var j=2; i*j <=num; j++) {
+  //        primes[i*j] = false;
+  //      }
+  //    }
+  //    console.log("primes", primes);
+
+  //    var result =[];
+  //    debugger;
+  //    for(var i=0; i<primes.length; i++) {
+  //      if(primes[i]) result.push(i);
+  //      console.log("primes result", result);
+  //    }
+  //    return result;
+    
+  // }
+  // primeNumber(5)
+  function bubbleSort(array) {
     debugger;
-    if (cache[index]) return cache[index];
-    else {
-      if (index < 3) return 1;
-      else {
-        cache[index] = fibMemo(index - 1, cache) + fibMemo(index - 2, cache);
+    for (var i = array.length; i > 0; i--) {
+      for (var j = 0; j < i; j++) {
+        if (array[j] > array[j + 1]) {
+          var temp = array[j];
+          console.log("temp value", temp);
+          array[j] = array[j + 1];
+          console.log("swap value", array[j] = array[j + 1]);
+          array[j + 1] = temp;
+        }
       }
     }
-    return cache[index];
-  }
-   
-  fibMemo(3);
+    
+    return array;
+}
+ 
+bubbleSort([5,4,1]);
   return (
     <div className="App">
 
