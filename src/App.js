@@ -217,24 +217,87 @@ function App() {
     
   // }
   // primeNumber(5)
-  function bubbleSort(array) {
-    debugger;
-    for (var i = array.length; i > 0; i--) {
-      for (var j = 0; j < i; j++) {
-        if (array[j] > array[j + 1]) {
-          var temp = array[j];
-          console.log("temp value", temp);
-          array[j] = array[j + 1];
-          console.log("swap value", array[j] = array[j + 1]);
-          array[j + 1] = temp;
-        }
-      }
-    }
+//   function bubbleSort(array) {
+//     debugger;
+//     for (var i = array.length; i > 0; i--) {
+//       for (var j = 0; j < i; j++) {
+//         if (array[j] > array[j + 1]) {
+//           var temp = array[j];
+//           console.log("temp value", temp);
+//           array[j] = array[j + 1];
+//           console.log("swap value", array[j] = array[j + 1]);
+//           array[j + 1] = temp;
+//         }
+//       }
+//     }
     
-    return array;
-}
+//     return array;
+// }
  
-bubbleSort([5,4,1]);
+// bubbleSort([5,4,1]);
+
+// function mergeSort(arr) {
+//   if(arr.length < 2) {
+//      return arr
+//   }
+//     var middleIndex = Math.floor(arr.length/2);
+//     debugger;
+//     var firstHalf = arr.slice(0,middleIndex);
+//     var secondHalf = arr.slice(middleIndex);
+    
+//     return merge(mergeSort(firstHalf), mergeSort(secondHalf));
+
+// }
+
+//  function merge(arr1, arr2) {
+//    var result = [];
+//    debugger;
+    
+//   while(arr1.length && arr2.length) {
+//     var minElem;
+//     if(arr1[0] < arr2[0]) {
+//       minElem = arr1.shift();
+//     } else minElem = arr2.shift();
+
+//     result.push(minElem);
+//   }
+//   if(arr1.length) {
+//      result = result.concat(arr1);
+//   } else      result = result.concat(arr2);
+//    return result;
+//  }
+// mergeSort([4,5,3]);
+
+function mergeSort(arr) {
+     if(arr.length < 2 ) return arr;
+     debugger;
+        var middleEle = Math.floor(arr.length/2);
+        var arr1 = arr.splice(0,middleEle);
+        var arr2 = arr.splice(middleEle);
+      return merge(mergeSort(arr1), mergeSort(arr2));
+}
+
+function merge(arr1, arr2) {
+   var result = [];
+   debugger;
+   console.log("result", result);
+   var minEle;
+  while(arr1.length && arr2.length) {
+     if(arr1[0] < arr2[0]) {
+        minEle = arr1.shift();
+     } else minEle =  arr2.shift();
+     
+     result.push(minEle); 
+  }
+
+  if(arr1.length) {
+    result = result.concat(arr1);
+  } else result = result.concat(arr2);
+   return result;
+}
+
+mergeSort([3,4,1]);
+
   return (
     <div className="App">
 
