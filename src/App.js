@@ -268,35 +268,88 @@ function App() {
 //  }
 // mergeSort([4,5,3]);
 
-function mergeSort(arr) {
-     if(arr.length < 2 ) return arr;
-     debugger;
-        var middleEle = Math.floor(arr.length/2);
-        var arr1 = arr.splice(0,middleEle);
-        var arr2 = arr.splice(middleEle);
-      return merge(mergeSort(arr1), mergeSort(arr2));
-}
+// function mergeSort(arr) {
+//      if(arr.length < 2 ) return arr;
+//      debugger;
+//         var middleEle = Math.floor(arr.length/2);
+//         var arr1 = arr.splice(0,middleEle);
+//         var arr2 = arr.splice(middleEle);
+//       return merge(mergeSort(arr1), mergeSort(arr2));
+// }
 
-function merge(arr1, arr2) {
-   var result = [];
-   debugger;
-   console.log("result", result);
-   var minEle;
-  while(arr1.length && arr2.length) {
-     if(arr1[0] < arr2[0]) {
-        minEle = arr1.shift();
-     } else minEle =  arr2.shift();
+// function merge(arr1, arr2) {
+//    var result = [];
+//    debugger;
+//    console.log("result", result);
+//    var minEle;
+//   while(arr1.length && arr2.length) {
+//      if(arr1[0] < arr2[0]) {
+//         minEle = arr1.shift();
+//      } else minEle =  arr2.shift();
      
-     result.push(minEle); 
-  }
+//      result.push(minEle); 
+//   }
 
-  if(arr1.length) {
-    result = result.concat(arr1);
-  } else result = result.concat(arr2);
-   return result;
-}
+//   if(arr1.length) {
+//     result = result.concat(arr1);
+//   } else result = result.concat(arr2);
+//    return result;
+// }
 
-mergeSort([3,4,1]);
+// mergeSort([3,4,1]);
+// function maxStockProfit (pricesArr) {
+//   var maxProfit = -1;
+//   var buyPrice = 0;
+//   var sellPrice = 0;
+  
+//   var changeBuyPrice = true;
+//    debugger;
+//   for (var i = 0; i < pricesArr.length; i++) {
+//     if (changeBuyPrice) buyPrice = pricesArr[i];
+//     sellPrice = pricesArr[i + 1];
+//     debugger;
+//     if (sellPrice < buyPrice) {
+//       changeBuyPrice = true;
+//     }
+//     else {
+//       var tempProfit = sellPrice - buyPrice;
+//       if (tempProfit > maxProfit) maxProfit = tempProfit;
+//       changeBuyPrice = false;
+//     }
+//   }
+  
+//   return maxProfit;
+// }
+ 
+// maxStockProfit([10, 18, 4, 5, 9, 6, 16, 12]);
+
+function maxStockProfit(arr) {
+    var maxProfit = -1;
+    var buyPrice = 0;
+    var sellPrice = 0;
+    var currentBuyPrice = true;
+    debugger;
+    for(var i=0; i < arr.length; i++) {
+        if(currentBuyPrice) {
+          buyPrice = arr[i];
+          sellPrice = arr[i + 1];
+        }
+        if(sellPrice < buyPrice) {
+          currentBuyPrice = true;
+        } else {
+          var tempProfit = sellPrice - buyPrice;
+          if(tempProfit > maxProfit) {
+            maxProfit = tempProfit;
+            currentBuyPrice = false
+          }
+       
+        }
+     
+    }
+    return maxProfit;
+};
+maxStockProfit([4,3,6,8,9,12,3,4])
+
 
   return (
     <div className="App">
