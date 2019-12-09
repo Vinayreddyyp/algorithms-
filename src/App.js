@@ -323,33 +323,63 @@ function App() {
  
 // maxStockProfit([10, 18, 4, 5, 9, 6, 16, 12]);
 
-function maxStockProfit(arr) {
-    var maxProfit = -1;
-    var buyPrice = 0;
-    var sellPrice = 0;
-    var currentBuyPrice = true;
-    debugger;
-    for(var i=0; i < arr.length; i++) {
-        if(currentBuyPrice) {
-          buyPrice = arr[i];
-          sellPrice = arr[i + 1];
-        }
-        if(sellPrice < buyPrice) {
-          currentBuyPrice = true;
-        } else {
-          var tempProfit = sellPrice - buyPrice;
-          if(tempProfit > maxProfit) {
-            maxProfit = tempProfit;
-            currentBuyPrice = false
-          }
+// function maxStockProfit(arr) {
+//     var maxProfit = -1;
+//     var buyPrice = 0;
+//     var sellPrice = 0;
+//     var currentBuyPrice = true;
+//     debugger;
+//     for(var i=0; i < arr.length; i++) {
+//         if(currentBuyPrice) {
+//           buyPrice = arr[i];
+//           sellPrice = arr[i + 1];
+//         }
+//         if(sellPrice < buyPrice) {
+//           currentBuyPrice = true;
+//         } else {
+//           var tempProfit = sellPrice - buyPrice;
+//           if(tempProfit > maxProfit) {
+//             maxProfit = tempProfit;
+//             currentBuyPrice = false
+//           }
        
-        }
+//         }
      
-    }
-    return maxProfit;
-};
-maxStockProfit([4,3,6,8,9,12,3,4])
+//     }
+//     return maxProfit;
+// };
+// maxStockProfit([4,3,6,8,9,12,3,4]);
 
+// function charCount(str) {
+//    var charObj = {};
+//    debugger;
+//     for( var char of str) {
+//         char = char.toLowerCase();
+//         charObj[char] = ++charObj[char] || 1;
+//     }
+//     return charObj;
+// }
+
+// charCount("hello hi");
+function  anagrams(first, second) {
+  let lookUp = {};
+  debugger;
+  for( let i=0; i < first.length; i++) {
+       let letter = first[i];
+      lookUp[letter] ? lookUp[letter] +=1 : lookUp[letter] = 1;
+  }
+
+  for( let j =0; j < second.length; j++) {
+      let letter = second[j];
+      if(!lookUp[letter]) {
+          return false
+      } else {
+        lookUp[letter] -= 1;
+      }
+  };
+  return true;
+};
+anagrams('cinema', 'iceman');
 
   return (
     <div className="App">
