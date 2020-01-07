@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './App.css';
+import { validate } from '@babel/types';
 
 function App() {
   
@@ -361,25 +362,91 @@ function App() {
 // }
 
 // charCount("hello hi");
-function  anagrams(first, second) {
-  let lookUp = {};
-  debugger;
-  for( let i=0; i < first.length; i++) {
-       let letter = first[i];
-      lookUp[letter] ? lookUp[letter] +=1 : lookUp[letter] = 1;
-  }
+// function  anagrams(first, second) {
+//   let lookUp = {};
+//   debugger;
+//   for( let i=0; i < first.length; i++) {
+//        let letter = first[i];
+//       lookUp[letter] ? lookUp[letter] +=1 : lookUp[letter] = 1;
+//   }
 
-  for( let j =0; j < second.length; j++) {
-      let letter = second[j];
-      if(!lookUp[letter]) {
-          return false
-      } else {
-        lookUp[letter] -= 1;
-      }
-  };
-  return true;
+//   for( let j =0; j < second.length; j++) {
+//       let letter = second[j];
+//       if(!lookUp[letter]) {
+//           return false
+//       } else {
+//         lookUp[letter] -= 1;
+//       }
+//   };
+//   return true;
+// };
+// anagrams('cinema', 'iceman');
+
+// function counterValuePattern(arr) {
+//     var i =0;
+//     debugger;
+//     for(var  j=1; j < arr.length; j++) {
+//        if(arr[i] !== arr[j]) {
+//          i++;
+//          arr[i] = arr[j];
+//          console.log(  arr[i] = arr[j]);
+//        }
+//     }
+//     return i+1;
+// }
+// counterValuePattern([1,2,3,3,5,4,7,5,5,5]);
+// function maxSubarraySum(arr, num){
+//   let maxSum = 0;
+//   let tempSum = 0;
+//   debugger;
+//   if (arr.length < num) return null;
+//   for (let i = 0; i < num; i++) {
+//     maxSum += arr[i];
+//   }
+//   tempSum = maxSum;
+//   for (let i = num; i < arr.length; i++) {
+//     tempSum = tempSum - arr[i - num] + arr[i];
+//     maxSum = Math.max(maxSum, tempSum);
+//   }
+//   return maxSum;
+// }
+
+// maxSubarraySum([2,6,9,2,1,8,5,6,3],3)
+
+function sumRange(num) {
+
+    if(num ===1) return 1;
+    return num + sumRange(num -1);
 };
-anagrams('cinema', 'iceman');
+sumRange(3);
+
+// function areDuplicates(val) {
+//   let var1 = val.toString();
+//   let counter = {};
+//   debugger;
+//   for(let i=0; i < var1.length; i++) {
+//      counter[ var1[i]] = (counter[ var1[i]] || 0) + 1
+//   };
+//   console.log("counter", counter);
+// };
+// areDuplicates(1,2,3);
+
+function binarySearch(arr, ele) {
+   let start = 0;
+   let  end = arr.length - 1; 
+   let middle = Math.floor((start + end) /2);
+   console.log("middle", middle)
+   while( arr[middle] !== ele && start <= end) {
+     debugger;
+      if( ele < arr[middle] ) end = middle -1;
+      else start = middle + 1;
+      middle =  Math.floor((start + end) /2);
+      console.log("middle", middle);
+   };
+ return arr[middle] === ele ? middle : -1;
+    
+};
+binarySearch([2,3,4,6,7,9,10,40,49], 50);
 
   return (
     <div className="App">
